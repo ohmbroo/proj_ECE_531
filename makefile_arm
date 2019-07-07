@@ -9,7 +9,7 @@ LIBS= -lcurl -uClibc -lc
 
 SRC=requestor.c
 OBJ=$(SRC:.c=.o)
-MAIN=test_arm
+MAIN=test_HTTP_arm
 
 RM=rm -rf
 .c.o:

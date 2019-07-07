@@ -1,20 +1,22 @@
-# CC=arm-linux-gnueabi-gcc
-CC=gcc
-CCFLAGS=
+BUILDROOT_HOME=/home/ohmbroo/buildroot-2019.05
+
+CC=$(BUILDROOT_HOME)/output/host/usr/bin/arm-linux-gcc
+# CC=gcc
+CCFLAGS= --sysroot=$(BUILDROOT_HOME)/output/staging
 INCLUDES=
-LFLAGS=-L/usr/lib/x86_64-linux-gnu
-LIBS=-lcurl -lpthread
+LFLAGS=
+LIBS= -lcurl -uClibc -lc
 
-SRC-requestor.c
+SRC=requestor.c
 OBJ=$(SRC:.c=.o)
-MAIN=test
+MAIN=test_HTTP_arm
 
-RM-rm -rf
+RM=rm -rf
 .c.o:
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(MAIN): $(OBJ)
-	$(CC) $CCFLAGS) $(INCLUDES) -o $(MAIN) $(OBJ) $(LFLAGS) $(LIBS)
+	$(CC) $(CCFLAGS) $(INCLUDES) -o $(MAIN) $(OBJ) $(LFLAGS) $(LIBS)
 
 all: $(MAIN)
 
