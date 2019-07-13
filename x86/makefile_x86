@@ -1,15 +1,13 @@
-BUILDROOT_HOME=/home/ohmbroo/buildroot-2019.05
-
-CC=$(BUILDROOT_HOME)/output/host/usr/bin/arm-linux-gcc
-# CC=gcc
-CCFLAGS= --sysroot=$(BUILDROOT_HOME)/output/staging
+# CC=arm-linux-gnueabi-gcc
+CC=gcc
+CCFLAGS=
 INCLUDES=
-LFLAGS=
-LIBS= -lcurl -uClibc -lc
+LFLAGS=-L/usr/lib/x86_64-linux-gnu
+LIBS= -lcurl -lpthread
 
 SRC=requestor.c
 OBJ=$(SRC:.c=.o)
-MAIN=hw
+MAIN=test
 
 RM=rm -rf
 .c.o:
